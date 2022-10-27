@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <AppHeader></AppHeader>
     <div class="bodyContainer">
       <h1 class="title">
         OMDb API <br /><span class="title-span"
@@ -64,17 +63,13 @@
         </select>
         <button class="btn">Apply</button>
       </div>
+      <div class="inner"></div>
     </div>
   </div>
 </template>
 
 <script>
-import AppHeader from "../common/AppHeader.vue";
-export default {
-  components: {
-    AppHeader,
-  },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -101,14 +96,28 @@ export default {
   padding: 0.8rem 1rem;
   margin-right: 1rem;
   width: 55%;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
 }
 .form-select {
   padding: 0.8rem 1rem;
   margin-right: 1rem;
-  width: 8%;
+  width: 8.5%;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
 }
 .btn {
   padding: 0.8rem 1rem;
-  width: 8%;
+  width: 9%;
+  background: #fdc000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+.inner {
+  background-color: gray;
+  padding: 10px 0;
+  border-radius: 4px;
+  text-align: center;
 }
 </style>

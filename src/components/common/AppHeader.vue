@@ -51,6 +51,7 @@ export default {};
   padding: 0.8rem;
   font-family: "Roboto", sans-serif;
   color: #fdc000;
+  font-weight: bold;
 }
 .profile {
   position: absolute;
