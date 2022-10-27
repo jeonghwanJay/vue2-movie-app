@@ -12,14 +12,20 @@
         <a class="nav-item" href="/about">About</a>
       </div>
     </div>
-    <div class="profile">
+    <div class="profile" v-on:click="clickAbout">
       <img src="../../assets/MyProfile.jpeg" alt="MyProfile" />
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    clickAbout() {
+      this.$router.push("/about");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -53,6 +59,10 @@ export default {};
   color: #fdc000;
   font-weight: bold;
 }
+.nav-item:active {
+  background: #fdc000;
+  color: white;
+}
 .profile {
   position: absolute;
   right: 3rem;
@@ -61,5 +71,6 @@ export default {};
 .profile img {
   width: 1.8rem;
   border-radius: 1rem;
+  cursor: pointer;
 }
 </style>
