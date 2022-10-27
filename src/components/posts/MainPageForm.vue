@@ -62,8 +62,10 @@
           <option value="">2014</option>
         </select>
         <button class="btn">Apply</button>
+        <div class="movie-inner">
+          <div class="movie-message">Search for the movie title!</div>
+        </div>
       </div>
-      <div class="inner"></div>
     </div>
   </div>
 </template>
@@ -108,16 +110,23 @@ export default {};
 }
 .btn {
   padding: 0.8rem 1rem;
-  width: 9%;
+  width: 8%;
   background: #fdc000;
   font-weight: bold;
   border: none;
   border-radius: 5px;
 }
-.inner {
+.movie-inner {
   background-color: gray;
-  padding: 10px 0;
+  padding: 4.8rem 0;
   border-radius: 4px;
   text-align: center;
+  width: 95.65%;
+  background: #e9ecef;
+  margin-top: 2rem;
+}
+.movie-message {
+  color: #ced4da;
+  font-size: 20px;
 }
 </style>
