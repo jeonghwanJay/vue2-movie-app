@@ -16,6 +16,10 @@ const router = new VueRouter({
       component: () => import("../views/MainPage.vue"),
     },
     {
+      path: "/movie",
+      component: () => import("../views/MoviePage.vue"),
+    },
+    {
       path: "/about",
       component: () => import("../views/MyInformation.vue"),
     },
