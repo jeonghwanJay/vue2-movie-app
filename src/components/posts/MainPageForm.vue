@@ -12,11 +12,12 @@
         users.<br />If you find this service useful, please consider making a
         one-time donation or become a patron.
       </p>
-      <div class="container">
+      <form class="container" @click.prevent="movieSearching">
         <input
           class="form-input"
           type="text"
           placeholder="Search for Movies, Series & more"
+          v-model="title"
         />
         <select class="form-select" name="form-select" id="">
           <option value="">movie</option>
@@ -62,16 +63,62 @@
           <option value="">2014</option>
         </select>
         <button class="btn">Apply</button>
-        <div class="movie-inner">
-          <div class="movie-message">Search for the movie title!</div>
-        </div>
+      </form>
+      <div class="movie-inner">
+        <div class="movie-message">Search for the movie title!</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+// import { fetchData } from "../../api/index";
+export default {
+  data() {
+    return {
+      title: "",
+      type: "",
+      number: "",
+      year: "",
+      filters: [
+        {
+          name: "type",
+          items: ["movie", "series", "episode"],
+        },
+        {
+          name: "number",
+          items: ["10", "20,", "30"],
+        },
+        {
+          name: "year",
+          itmes: (() => {
+            const years = [];
+            const thisYear = new Date().getFullYear();
+            for (let i = thisYear; i >= 1985; i -= 1) {
+              years.push[i];
+            }
+            return years;
+          })(),
+        },
+      ],
+    };
+  },
+  methods: {
+    async movieSearching() {
+      try {
+        const movieOptions = {
+          title: this.title,
+          type: this.type,
+          number: this.number,
+          year: this.year,
+        };
+        await this.$store.dispatch("fetchDataList", movieOptions);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
