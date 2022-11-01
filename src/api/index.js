@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://img.omdbapi.com/?apikey=[23d18cc9]&",
+  baseURL: "http://img.omdbapi.com/?i=tt3896198&apikey=23d18cc9",
+  responseType: "blob",
 });
 
 function fetchData() {

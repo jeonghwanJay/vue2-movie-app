@@ -12,7 +12,7 @@
         users.<br />If you find this service useful, please consider making a
         one-time donation or become a patron.
       </p>
-      <form class="container" @click.prevent="movieSearching">
+      <form class="container" @submit.prevent="movieSearching">
         <input
           class="form-input"
           type="text"
@@ -62,20 +62,28 @@
           <option value="">2013</option>
           <option value="">2014</option>
         </select>
-        <button class="btn">Apply</button>
+        <button type="submit" class="btn">Apply</button>
       </form>
       <div class="movie-inner">
-        <div class="movie-message">Search for the movie title!</div>
+        <div class="movie-message">
+          <!-- Search for the movie title! -->
+          <img :src="movie" alt="" class="image" />
+          <!-- <img
+            src="https://img.omdbapi.com/?i=tt3896198&apikey=23d18cc9"
+            alt=""
+          /> -->
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import { fetchData } from "../../api/index";
+import { fetchImg } from "../../api/index";
 export default {
   data() {
     return {
+      movie: "",
       title: "",
       type: "",
       number: "",
@@ -112,7 +120,10 @@ export default {
           number: this.number,
           year: this.year,
         };
-        await this.$store.dispatch("fetchDataList", movieOptions);
+        const response = await fetchImg(movieOptions);
+        const imgUrl = "https://img.omdbapi.com/?i=tt3896198&apikey=23d18cc9";
+        this.movie = imgUrl;
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
@@ -173,7 +184,16 @@ export default {
   margin-top: 2rem;
 }
 .movie-message {
-  color: #ced4da;
-  font-size: 20px;
+  /* color: #ced4da; */
+  /* font-size: 20px; */
+  /* background-image:; */
+  /* background-image: `url(${image}) `; */
+  width: 10rem;
+  height: 10rem;
+}
+.image {
+  /* display: none; */
+  width: 5rem;
+  height: 5rem;
 }
 </style>

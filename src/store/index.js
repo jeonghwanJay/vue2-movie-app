@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { fetchData } from "../api/index";
+import { fetchImg } from "../api/index";
 
 Vue.use(Vuex);
 
@@ -19,9 +19,10 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchDataList({ commit }, movieOptions) {
-      const { data } = await fetchData(movieOptions);
-      commit("setMovie", data);
-      return data;
+      const response = await fetchImg(movieOptions);
+      console.log(response);
+      commit("setMovie", response);
+      return response;
     },
     // async fetchMovieList(context) {},
   },
